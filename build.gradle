@@ -1,0 +1,32 @@
+plugins {
+    id("java")
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+
+    // Spring Boot dependencies
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Apache POI dependencies
+    implementation("org.apache.poi:poi-ooxml:5.2.2")
+    implementation("org.apache.poi:poi:5.2.2")
+
+    // Lombok dependencies
+    compileOnly 'org.projectlombok:lombok:1.18.24' // use the latest version
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
